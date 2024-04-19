@@ -3,13 +3,12 @@ let currentUser = null;
 export default function UserRoutes(app) {
   const createUser = async (req, res) => {
     const user = await dao.findUserByUsername(req.body.username);
-    console.log(user);
     if (user) {
       res.status(400).json({ message: "Username already taken" });
+    } else {
+      currentUser = await dao.createUser(req.body);
+      res.json(currentUser);
     }
-    user = await dao.createUser(req.body);
-    console.log(user);
-    res.json(user);
   };
   const deleteUser = async (req, res) => {
     const status = await dao.deleteUser(req.params.userId);
@@ -39,9 +38,10 @@ export default function UserRoutes(app) {
     const user = await dao.findUserByUsername(req.body.username);
     if (user) {
       res.status(400).json({ message: "Username already taken" });
+    } else {
+      currentUser = await dao.createUser(req.body);
+      res.json(currentUser);
     }
-    currentUser = await dao.createUser(req.body);
-    res.json(currentUser);
   };
   const signin = async (req, res) => {
     const { username, password } = req.body;
