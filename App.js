@@ -10,9 +10,7 @@ import session from "express-session";
 import "dotenv/config";
 import cors from "cors";
 
-mongoose.connect(
-  "mongodb+srv://Cluster78574:WV9LRFhrU0lf@cluster78574.bwulyn0.mongodb.net/kanbas"
-);
+mongoose.connect(process.env.DB_CONNECTION_STRING);
 const app = express();
 app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL }));
 const sessionOptions = {
