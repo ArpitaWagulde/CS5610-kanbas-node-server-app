@@ -16,7 +16,6 @@ function QuizRoutes(app) {
     res.sendStatus(200);
   });
   app.get("/api/courses/:cid/quizzes", (req, res) => {
-    console.log("in here");
     const { cid } = req.params;
     const quizzes = db.quizzes.filter((q) => q.course === cid);
     res.send(quizzes);
