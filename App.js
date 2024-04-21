@@ -8,6 +8,10 @@ import mongoose from "mongoose";
 import UserRoutes from "./Users/routes.js";
 
 import cors from "cors";
+
+mongoose.connect(
+  "mongodb+srv://Cluster78574:WV9LRFhrU0lf@cluster78574.bwulyn0.mongodb.net/kanbas"
+);
 const app = express();
 app.use(cors());
 app.use(express.json());
